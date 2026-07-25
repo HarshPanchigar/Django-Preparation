@@ -15,3 +15,6 @@ def article_by_year(request , year):
 
 def article_details(request,**kwargs):
     return HttpResponse(f'<h1>Data : {kwargs}</h1>')
+
+def home(request):
+    return render(request,'home.html')

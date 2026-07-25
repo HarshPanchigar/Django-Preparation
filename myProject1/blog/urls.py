@@ -7,4 +7,6 @@ urlpatterns = [
     path('article/<int:year>/<int:month>/<int:days>', views.article_details , name='article_details'),
 
     re_path(r'^article/(?P<year>[0-9]{4})/$',views.article_by_year , name='article_by_year'),   
+
+    path('',views.home , name='home')
 ]
