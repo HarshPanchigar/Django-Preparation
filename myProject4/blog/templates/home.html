@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template basic</title>
+</head>
+<body>
+    <h1>Template basic</h1>
+    <p>welcome to the blog page!</p>
+    <!-- this is comment -->
+    {% comment %}this is 2nd comment {% endcomment %}
+    {# this is 3rd comment #}
+
+    <p>name : {{ name }}</p>
+    <p>age : {{ age }}</p>
+    
+    List access : 
+    <p>skill 1 : {{ skill.0 }}</p>
+    <p>skill 2 : {{ skill.1 }}</p>
+    <p>skill 3 : {{ skill.2 }}</p>
+    OBJ attribute
+    <p>User name : {{user.name}}</p>
+    <p>User age : {{user.age}}</p>
+    <p>User Is adult : {{user.is_adult}}</p>
+    Disct
+    <h2>Blog Information </h2>
+    <p>Title : {{blog.title}}</p>
+    <p>created At : <b>{{blog.created_at}}</b></p>
+    <p>contect : {{blog.contect}}</p>
+    <p>contect : {{blog.contect | safe}}</p>
+    default value
+    <p>empty_value : {{empty_value|default:"No data provided"}}</p>
+    nested variable 
+    <p>auther name : {{blog.auther.name}}</p>
+</body>
+</html>
