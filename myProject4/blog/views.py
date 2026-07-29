@@ -9,7 +9,7 @@ class User:
 
     def is_adult(self):
         return self.age >= 18
-
+ 
 def home(request):
     context = {
         'name' : 'Harsh',
