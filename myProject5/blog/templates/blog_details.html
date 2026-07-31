@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details</title>
+    <style>
+        p {
+            font-size: 22px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Blog filter Page</h1>
+    
+    <!-- Yes / No & Plural -->
+    <p><b>Yes / No & Plural : </b></p>
+    <p><b>author Available? : </b> {{post.author|yesno:"Yes,No,Maybe"}}</p>
+    <p><b>Comment Counts : </b> {{post.comment_count}} Comment{{post.comment_count|pluralize}}</p>
+    <hr>
+    <!-- Date & Time Filter -->
+    <p><b>Date & Time : </b> {{post.Created_at}}</p>
+    <p><b>Date & Time (Formated): </b> {{post.Created_at|date:"D d M y"}}</p>
+    <p><b>Time Only (Formated): </b> {{post.Created_at|time:"H:i"}}</p>
+    
+    <hr>
+    <!-- Encoding & Formating -->
+        <p><b>Title Encode : </b>{{post.title|urlencode}}</p>
+        <p><b>Float format example : </b>{{123.4567899|floatformat:2}}</p>
+    <hr>
+    <!-- List Filter -->
+    <p><b>Title Normal : </b> {{post.tags}}</p>
+    <p><b>first tag : </b> {{post.tags | first}}</p>
+    <p><b>last tag : </b> {{post.tags | last}}</p>
+    <p><b>Lenght tag : </b> {{post.tags | length}}</p>
+    <p><b>slice (First 2) : </b> {{post.tags | slice:":2"}}</p>
+    <p><b>join tag : </b> {{post.tags | join:" , "}}</p>
+<hr>
+    <!-- Number Filter -->
+    <p><b>Original Price : </b> {{post.price}}</p>
+    <p><b>Original Price (+5) : </b> {{post.price | add:5}}</p>
+    <p><b>Original Price (+10) : </b> {{post.price | add:10}}</p>
+
+    <h1>Division : </h1>
+    {% if post.number|divisibleby:2%}
+    <p style="color: green;">{{post.number}} is Even</p>
+    {%else%}
+    <p style="color: red;">{{post.number}} is Odd</p>
+    {% endif %}
+    <hr>
+    <!-- Text Filter -->
+    <p><b> Title (Normal)</b> {{post.title}}</p>
+    <p><b> Upper Case : </b> {{post.title | upper}}</p>
+    <p><b> Lower Case : </b> {{post.title | lower}}</p>
+    <p><b> Capital : </b> {{post.title | capfirst}}</p>
+    <p><b> Title case : </b> {{post.title | title}}</p>
+    <p><b> Truncatechars : </b> {{post.title | truncatechars:10 }}</p>
+    <p><b> TruncateWord : </b> {{post.title | truncatewords:1 }}</p>
+    <p><b> Line Break : </b> {{post.title | linebreaks }}</p>
+
+</body>
+
+</html>
