@@ -1,0 +1,21 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fafafa;
+    text-align: center;
+    padding: 20px;
+}
+
+nav ul{
+    list-style: none;
+    background: #333;
+    padding: 20px;
+}
+
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+h1{
+    color: blue;
+}

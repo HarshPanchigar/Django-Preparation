@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block title%}Home Page{% endblock%}
+</head>
+<body>
+    {%block content%}
+        <h1>Welcome to home page</h1>
+        <h1>This is home page</h1>
+        <img style="height: 100px;" src="{% static 'images/logo.png' %}" alt="">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <button type="submit">Login</button>
+        </form>
+        <button onclick="showAlert()">Click me</button>
+    {% endblock %}
+</body>
+</html>
