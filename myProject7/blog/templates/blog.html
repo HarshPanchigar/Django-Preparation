@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template</title>
+</head>
+<body>
+    {% comment %} autoescape {% endcomment %}
+    <h2>Autoescape Example</h2>
+    <p>default(Safe Escaped): {{html_code}}</p>
+    <p>autoescape Off: {{html_code|safe}}</p>
+    {% autoescape off%}
+    <p>autoescape Off: {{html_code}}</p>
+    {% endautoescape %}
+    <hr>
+    {% comment %} varbatin {% endcomment %}
+    {% verbatim  %}
+        <p> Auther: {{blog.0.author}}
+    {% endverbatim  %}
+        <p> Auther: {{blog.0.author}}
+
+    <hr>
+    {% comment %} Firstof {% endcomment %}
+    <p> Auther: {% firstof blog.1.author "Anonymous"  %}
+    <hr><br>
+    {% comment %} cycle {% endcomment %}
+    <h2> Blog in table </h2>
+    <table border='1',cellpadding='5',cellspacing='0'>
+        {%for blog in blogs %}
+        <tr style="background-color: {% cycle 'lightblue' 'lightgreen'%};">
+            <td>{{forloop.counter}}</td>
+            <td>{{blog.title}}</td>
+            <td>{{blog.author}}</td>
+        {% endfor %}
+    </table><br>
+    <hr>
+    <h1>Django project</h1>
+    <p>{{ today }}</p>
+    {% if blogs.1.is_featured %}
+        <h2>Featured Blog : {{blogs.1.title}}</h2>
+    {% else %}
+        <h2>No Featured Blog : {{blogs.1.title}}</h2>
+    {% endif %}
+
+    {% comment %} For Loop {% endcomment %}
+    <ul>
+        {% for blog in blogs %}
+        <li> {{forloop.counter}}. {{blog.title}} - {{blog.author}} </li>
+        {%empty%}
+        <li>
+            No blogs available.
+        </li>
+        {% endfor %}
+    </ul>
+    {% comment %} with {% endcomment %}
+    {% with total_blog=blogs|length %}
+    <p>Total Blogs: {{total_blog}}</p>
+    {% endwith %}
+</body>
+</html>
