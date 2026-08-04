@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Student
 
 def blog(request):
-    return render(request,'blog.html')
+    students = Student.objects.all()
+    return render(request,'blog.html' , {'students' : students})

@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home Page</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>Hello World</h1>
-        <script src="" async defer></script>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+</head>
+<body>
+
+    <h1>Hello World</h1>
+
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if students %}
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.email }}</td>
+                </tr>
+                {% endfor %}
+
+            {% else %}
+                <tr>
+                    <td colspan="3" align="center">
+                        No Students Data Available
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+</body>
 </html>
