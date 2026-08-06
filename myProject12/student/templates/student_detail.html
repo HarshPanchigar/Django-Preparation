@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+</head>
+<body>
+    <h1>Students Data</h1>
+    <strong>Name :</strong> {{ student.name }}<br>
+    <strong>Age :</strong> {{ student.age }}<br>
+    <strong>Email :</strong> {{ student.email }}<br><br>
+    <a href="{% url 'student_create' %}" style="display:inline-block; background:green; color:white; padding:10px 18px; text-decoration:none; border-radius:5px;">Add New Student</a><br><br>
+
+    <a href="{% url 'student_list' %}" style="display:inline-block; background:#007bff; color:white; padding:10px 18px; text-decoration:none; border-radius:5px;">
+    Back to Student List
+    </a>
+</body>
+</html>
