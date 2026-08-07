@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{{ movie.Title }}</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            background:#f5f5f5;
+            padding:40px;
+        }
+
+        .container{
+            display:flex;
+            gap:40px;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+        }
+
+        img{
+            width:300px;
+        }
+
+        h1{
+            margin-top:0;
+        }
+
+        p{
+            line-height:1.7;
+        }
+
+        a{
+            text-decoration:none;
+            display:inline-block;
+            margin-bottom:20px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<a href="/">⬅ Back</a>
+
+{% if movie %}
+
+<div class="container">
+
+    <div>
+
+        <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+
+    </div>
+
+    <div>
+
+        <h1>{{ movie.Title }}</h1>
+
+        <p><strong>Year:</strong> {{ movie.Year }}</p>
+
+        <p><strong>IMDb Rating:</strong> ⭐ {{ movie.imdbRating }}</p>
+
+        <p><strong>Genre:</strong> {{ movie.Genre }}</p>
+
+        <p><strong>Runtime:</strong> {{ movie.Runtime }}</p>
+
+        <p><strong>Language:</strong> {{ movie.Language }}</p>
+
+        <p><strong>Director:</strong> {{ movie.Director }}</p>
+
+        <p><strong>Writer:</strong> {{ movie.Writer }}</p>
+
+        <p><strong>Actors:</strong> {{ movie.Actors }}</p>
+
+        <p><strong>Awards:</strong> 🏆 {{ movie.Awards }}</p>
+
+        <p><strong>Released:</strong> {{ movie.Released }}</p>
+
+        <p><strong>Box Office:</strong> {{ movie.BoxOffice }}</p>
+
+        <p><strong>Plot:</strong></p>
+
+        <p>{{ movie.Plot }}</p>
+
+    </div>
+
+</div>
+
+{% else %}
+
+<h2>Movie not found.</h2>
+
+{% endif %}
+
+</body>
+
+</html>

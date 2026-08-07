@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Finder</title>
+
+    <style>
+
+        body{
+            font-family: Arial;
+            background:#f5f5f5;
+            padding:40px;
+        }
+
+        form{
+            margin-bottom:30px;
+        }
+
+        input{
+            width:300px;
+            padding:10px;
+        }
+
+        button{
+            padding:10px 20px;
+        }
+
+        .movies{
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+        }
+
+        .card{
+            width:220px;
+            background:white;
+            padding:15px;
+            border-radius:10px;
+            text-align:center;
+            box-shadow:0 0 10px rgba(0,0,0,.2);
+        }
+
+        img{
+            width:200px;
+            height:300px;
+            object-fit:cover;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Movie Finder</h1>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="movie"
+        placeholder="Search Movie..."
+        value="{{ movie_name }}"
+    >
+
+    <button type="submit">
+        Search
+    </button>
+
+</form>
+
+<div class="movies">
+
+{% for movie in movies %}
+
+<div class="card">
+
+    <img src="{{ movie.Poster }}" alt="{{ movie.Title }}">
+
+    <h3>{{ movie.Title }}</h3>
+
+    <p>{{ movie.Year }}</p>
+
+    <a href="{% url 'movie_detail' movie.imdbID %}">
+        View Details
+    </a>
+
+</div>
+
+{% empty %}
+
+<p>No Movies Found.</p>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>
