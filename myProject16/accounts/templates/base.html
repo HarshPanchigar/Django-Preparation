@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django files uplode</title>
+</head>
+<body>
+    <a href="{% url "upload_profile" %}">Upload Profile Picture </a> |
+    <a href="{% url "view_profile" %}">View Profile Picture</a>
+    <hr>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{message}}</li>            
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
