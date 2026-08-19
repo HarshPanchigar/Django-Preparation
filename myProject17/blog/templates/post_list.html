@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Pagination</title>
+</head>
+<body>
+    <h1>Blog Post</h1>
+    <ul>
+        {% for post in page_obj %}
+            <li>{{post.title}}</li>
+        {% endfor %}
+    </ul>
+    {% comment %} Pagination {% endcomment %} 
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}"> Previous </a>
+        {% endif %}
+        {% for num in page_obj %}
+    </div>
+</body>
+</html>
