@@ -3,7 +3,7 @@ from .models import Post
 from django.core.paginator import Paginator
 
 def post_list(request):
-    post = Post.objects.all().order_by('-id')
+    post = Post.objects.all().order_by('id')
     paginator = Paginator(post , 4)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)

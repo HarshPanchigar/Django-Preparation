@@ -4,21 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Django Pagination</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background: #f5f5f5;
+        margin: 0;
+        padding: 40px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    ul {
+        max-width: 600px;
+        margin: 0 auto 30px;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        background: white;
+        padding: 15px 20px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin-top: 30px;
+    }
+
+    .pagination a,
+    .pagination .current {
+        padding: 8px 14px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .pagination a {
+        background: white;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+
+    .pagination a:hover {
+        background: #333;
+        color: white;
+    }
+
+    .pagination .current {
+        background: #333;
+        color: white;
+        font-weight: bold;
+    }
+</style>
+    </style>
 </head>
 <body>
+
     <h1>Blog Post</h1>
+
     <ul>
         {% for post in page_obj %}
-            <li>{{post.title}}</li>
+            <li><b>{{ post.title }}</b> - {{post.content}}</li>
         {% endfor %}
     </ul>
-    {% comment %} Pagination {% endcomment %} 
+
+    {% comment %} Pagination {% endcomment %}
+
     <div class="pagination">
+
         {% if page_obj.has_previous %}
             <a href="?page=1">First</a>
-            <a href="?page={{ page_obj.previous_page_number }}"> Previous </a>
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
         {% endif %}
-        {% for num in page_obj %}
+
+
+        {% for num in page_obj.paginator.page_range %}
+
+            {% if page_obj.number == num %}
+                <span class="current">{{ num }}</span>
+            {% else %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+
+        {% endfor %}
+
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+
     </div>
+
 </body>
 </html>
