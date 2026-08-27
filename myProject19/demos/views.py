@@ -14,10 +14,10 @@ def aboutfun(request):
     context = {'msg' : 'welcome to about us page'}
     return render(request, 'about.html' ,context)
 
-# def newsfun(request):
-#     template_name = 'news.html'
-#     context = {'info' : 'this page is load from url'}
-#     return render(request, template_name ,context)
+def newsfun(request):
+    template_name = 'news.html'
+    context = {'info' : 'this page is load from url'}
+    return render(request, template_name ,context)
 
 def newsfun(request, template_name):
     template_name = template_name
